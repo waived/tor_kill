@@ -1,0 +1,27 @@
+1) Ensure Tor is installed/running Properly
+
+    BASH terminal:    
+    sudo apt install tor
+    sudo service tor start
+        
+If work correctly, Tor should listening on port 9050 for
+SOCKS4/5 connections and on port 9051 for control connections.
+   
+2) To ensure Tor is configured properly, update the torrc
+configuration file, located...
+   
+    LINUX/UNIX: /etc/tor/torrc
+     
+    WINDOWS: C:\Users\<username>\AppData\Roaming\tor\torrc on Windows.
+
+Ensure these lines are in your torrc:
+
+    SocksPort 127.0.0.1:9050
+    ControlPort 127.0.0.1:9051
+
+3) If connection errors, check for Controller Authentication in the torrc
+configuration file. This may occur occur if controller is not authenticated 
+properly. Ensure the torrc configuration file has this line:
+
+    CookieAuthentication 1
+
